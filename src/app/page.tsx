@@ -30,8 +30,8 @@ export default function Home() {
         tags: ['지혜로운', '다정한', '열정적인'],
         phoneNumber: '000-000-0000',
         parents: [
-          { relation: '아버지', name: '김용석', phoneNumber: '000-000-0000' },
-          { relation: '어머니', name: '노혜경', phoneNumber: '000-000-0000' }
+          { relation: '아버지', name: '김용석', phoneNumber: '010-3664-7179' },
+          { relation: '어머니', name: '노혜경', phoneNumber: '010-5590-8346' }
         ]
       },
       groom: {
@@ -44,8 +44,8 @@ export default function Home() {
         tags: ['다정한', '책임감', '유머러스'],
         phoneNumber: '000-000-0000',
         parents: [
-          { relation: '아버지', name: '신안식', phoneNumber: '000-000-0000' },
-          { relation: '어머니', name: '이은혜', phoneNumber: '000-000-0000' }
+          { relation: '아버지', name: '신안식', phoneNumber: '010-4751-5007' },
+          { relation: '어머니', name: '이은혜', phoneNumber: '010-7544-3385' }
         ]
       }
     },

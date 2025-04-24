@@ -16,7 +16,7 @@ const sunflower = Sunflower({
 });
 
 export const metadata: Metadata = {
-  title: "민지 & 준호, 결혼합니다",
+  title: "우성 & 태린, 결혼합니다",
   description: "2025년 5월 17일 토요일 오후 1시 30분, 더 라움 아트센터",
 };
 

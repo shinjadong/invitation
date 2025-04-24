@@ -42,7 +42,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
     threshold: 0.1,
   });
 
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  // const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   return (
     <section id="gallery" className="py-20 bg-background">

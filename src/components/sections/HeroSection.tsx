@@ -83,16 +83,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <motion.div variants={itemVariants} className="mb-6">
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-3xl md:text-5xl font-medium">
             <div className="flex flex-col items-center">
-              <span className="font-sunflower">{coupleNames.bride.lastName}{coupleNames.bride.firstName}</span>
-              {coupleNames.bride.engName && (
-                <span className="text-sm md:text-base font-light mt-1">{coupleNames.bride.engName}</span>
+              <span className="font-sunflower">{coupleNames.groom.firstName}</span>
+              {coupleNames.groom.engName && (
+                <span className="text-sm md:text-base font-light mt-1">{coupleNames.groom.engName}</span>
               )}
             </div>
             <span className="text-primary">&amp;</span>
             <div className="flex flex-col items-center">
-              <span className="font-sunflower">{coupleNames.groom.lastName}{coupleNames.groom.firstName}</span>
-              {coupleNames.groom.engName && (
-                <span className="text-sm md:text-base font-light mt-1">{coupleNames.groom.engName}</span>
+              <span className="font-sunflower">{coupleNames.bride.firstName}</span>
+              {coupleNames.bride.engName && (
+                <span className="text-sm md:text-base font-light mt-1">{coupleNames.bride.engName}</span>
               )}
             </div>
           </div>

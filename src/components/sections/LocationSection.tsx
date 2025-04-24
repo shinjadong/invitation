@@ -84,11 +84,10 @@ const LocationSection: React.FC<LocationSectionProps> = ({
           <Card className="mb-8">
             <CardContent className="p-6">
               <div className="text-center mb-6">
-                <h3 className="text-xl font-medium mb-1">{location.name}</h3>
-                <p className="text-muted-foreground">{location.address}</p>
-                {location.detailAddress && (
-                  <p className="text-sm text-muted-foreground">{location.detailAddress}</p>
-                )}
+                <h3 className="text-2xl font-semibold mb-2">{location.name}</h3>
+                <p className="text-lg mb-4">{location.detailAddress}</p>
+                <p className="mb-2"><strong>주소:</strong> {location.address}</p>
+                <p className="mb-6"><strong>전화:</strong> 02-538-3300</p>
               </div>
 
               {/* 지도 영역 */}

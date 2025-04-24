@@ -4,7 +4,8 @@ const nextConfig = {
     domains: [
       'images.unsplash.com',
       'lh3.googleusercontent.com',
-      'www.google.com'
+      'www.google.com',
+      'bhmrakolqc17mtsl.public.blob.vercel-storage.com'
     ],
   },
   experimental: {

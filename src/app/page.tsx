@@ -7,7 +7,6 @@ import CoupleSection from '@/components/sections/CoupleSection';
 import LocationSection from '@/components/sections/LocationSection';
 import Footer from '@/components/layout/Footer';
 import { ScrollAnimation } from '@/components/ui/scroll-animation';
-import { AudioPlayer } from '@/components/ui/audio-player';
 
 // 레이지 로딩을 적용한 컴포넌트
 const GallerySection = dynamic(() => import('@/components/sections/GallerySection'), {
@@ -16,6 +15,11 @@ const GallerySection = dynamic(() => import('@/components/sections/GallerySectio
 
 const GuestbookSection = dynamic(() => import('@/components/sections/GuestbookSection'), {
   loading: () => <div className="py-20 text-center">방명록을 불러오는 중...</div>
+});
+
+// 오디오 플레이어 컴포넌트를 동적으로 가져옴
+const AudioPlayer = dynamic(() => import('@/components/ui/audio-player/AudioPlayer'), {
+  ssr: false,
 });
 
 export default function Home() {
@@ -123,7 +127,9 @@ export default function Home() {
   return (
     <>
       {/* 배경음악 플레이어 */}
-      <AudioPlayer audioSrc="/audio/wedding-bgm.mp3" autoPlay={true} />
+      {typeof window !== 'undefined' && (
+        <AudioPlayer audioSrc="/audio/wedding-bgm.mp3" autoPlay={true} />
+      )}
       
       <Header 
         coupleNames={{

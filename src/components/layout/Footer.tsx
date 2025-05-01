@@ -139,7 +139,7 @@ const Footer: React.FC<FooterProps> = ({
                       </div>
                       
                       <div className="flex flex-col items-center p-4 border rounded-md mb-3">
-                        <p className="font-medium">김태린 (정주희) <span className="text-sm text-muted-foreground">신부</span></p>
+                        <p className="font-medium">김태린 <span className="text-sm text-muted-foreground">신부</span></p>
                         <p className="text-sm text-muted-foreground">기업은행</p>
                         <p className="text-sm mt-1">230-145980-01-012</p>
                         <Button variant="ghost" size="sm" className="mt-2" onClick={() => {

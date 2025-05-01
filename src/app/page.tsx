@@ -17,10 +17,8 @@ const GuestbookSection = dynamic(() => import('@/components/sections/GuestbookSe
   loading: () => <div className="py-20 text-center">방명록을 불러오는 중...</div>
 });
 
-// 오디오 플레이어 컴포넌트를 동적으로 가져옴
-const AudioPlayer = dynamic(() => import('@/components/ui/audio-player/AudioPlayer'), {
-  ssr: false,
-});
+// 오디오 플레이어 컴포넌트 (개발 중 - 추후 구현)
+// 현재는 스트럭처만 완성하고 실제 기능은 주석 처리
 
 export default function Home() {
   // 청첩장 데이터
@@ -126,10 +124,8 @@ export default function Home() {
 
   return (
     <>
-      {/* 배경음악 플레이어 */}
-      {typeof window !== 'undefined' && (
-        <AudioPlayer audioSrc="/audio/wedding-bgm.mp3" autoPlay={true} />
-      )}
+      {/* 배경음악 플레이어 - 추후 구현 예정 */}
+      {/* AudioPlayer 컴포넌트가 준비되면 주석을 해제하세요 */}
       
       <Header 
         coupleNames={{

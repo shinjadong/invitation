@@ -7,6 +7,7 @@ import CoupleSection from '@/components/sections/CoupleSection';
 import LocationSection from '@/components/sections/LocationSection';
 import Footer from '@/components/layout/Footer';
 import { ScrollAnimation } from '@/components/ui/scroll-animation';
+import { AudioPlayer } from '@/components/ui/audio-player';
 
 // 레이지 로딩을 적용한 컴포넌트
 const GallerySection = dynamic(() => import('@/components/sections/GallerySection'), {
@@ -121,6 +122,9 @@ export default function Home() {
 
   return (
     <>
+      {/* 배경음악 플레이어 */}
+      <AudioPlayer audioSrc="/audio/wedding-bgm.mp3" autoPlay={true} />
+      
       <Header 
         coupleNames={{
           bride: weddingData.couple.bride.fullName,

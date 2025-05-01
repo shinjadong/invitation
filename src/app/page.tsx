@@ -112,13 +112,13 @@ export default function Home() {
     accountInfo: {
       bride: {
         name: '정주희 (신부)',
-        bank: '하나은행',
+        bank: '기업은행',
         accountNumber: '230-145980-01-012'
       },
       groom: {
         name: '신우성 (신랑)',
         bank: '신한은행',
-        accountNumber: '000-000-000'
+        accountNumber: '110-488-348555'
       }
     }
   };

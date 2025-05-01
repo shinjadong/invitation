@@ -116,10 +116,10 @@ const Footer: React.FC<FooterProps> = ({
                       <h4 className="text-center text-sm font-medium text-muted-foreground">신부측</h4>
                       <div className="flex flex-col items-center p-4 border rounded-md mb-3">
                         <p className="font-medium">김용석 <span className="text-sm text-muted-foreground">부</span></p>
-                        <p className="text-sm text-muted-foreground">카카오뱅크</p>
-                        <p className="text-sm mt-1">3333-0000-1111</p>
+                        <p className="text-sm text-muted-foreground">기업은행</p>
+                        <p className="text-sm mt-1">120-140722-01-014</p>
                         <Button variant="ghost" size="sm" className="mt-2" onClick={() => {
-                          navigator.clipboard.writeText("3333-0000-1111");
+                          navigator.clipboard.writeText("120-140722-01-014");
                           alert('계좌번호가 복사되었습니다.');
                         }}>
                           복사하기
@@ -128,10 +128,10 @@ const Footer: React.FC<FooterProps> = ({
                       
                       <div className="flex flex-col items-center p-4 border rounded-md mb-3">
                         <p className="font-medium">노혜경 <span className="text-sm text-muted-foreground">모</span></p>
-                        <p className="text-sm text-muted-foreground">카카오뱅크</p>
-                        <p className="text-sm mt-1">3333-0000-2222</p>
+                        <p className="text-sm text-muted-foreground">기업은행</p>
+                        <p className="text-sm mt-1">230-133516-01-01</p>
                         <Button variant="ghost" size="sm" className="mt-2" onClick={() => {
-                          navigator.clipboard.writeText("3333-0000-2222");
+                          navigator.clipboard.writeText("230-133516-01-01");
                           alert('계좌번호가 복사되었습니다.');
                         }}>
                           복사하기
@@ -140,7 +140,7 @@ const Footer: React.FC<FooterProps> = ({
                       
                       <div className="flex flex-col items-center p-4 border rounded-md mb-3">
                         <p className="font-medium">김태린 (정주희) <span className="text-sm text-muted-foreground">신부</span></p>
-                        <p className="text-sm text-muted-foreground">하나은행</p>
+                        <p className="text-sm text-muted-foreground">기업은행</p>
                         <p className="text-sm mt-1">230-145980-01-012</p>
                         <Button variant="ghost" size="sm" className="mt-2" onClick={() => {
                           navigator.clipboard.writeText("230-145980-01-012");

@@ -7,6 +7,7 @@ import CoupleSection from '@/components/sections/CoupleSection';
 import LocationSection from '@/components/sections/LocationSection';
 import Footer from '@/components/layout/Footer';
 import { ScrollAnimation } from '@/components/ui/scroll-animation';
+import { AudioPlayer } from '@/components/ui/audio-player/AudioPlayer';
 
 // 레이지 로딩을 적용한 컴포넌트
 const GallerySection = dynamic(() => import('@/components/sections/GallerySection'), {
@@ -126,6 +127,11 @@ export default function Home() {
     <>
       {/* 배경음악 플레이어 - 추후 구현 예정 */}
       {/* AudioPlayer 컴포넌트가 준비되면 주석을 해제하세요 */}
+      <ScrollAnimation style="shorts" delay={0}>
+        <div className="fixed bottom-4 right-4 z-50">
+          <AudioPlayer audioSrc="https://bhmrakolqc17mtsl.public.blob.vercel-storage.com/wedding-bgm-rTpLCrgAUDIQnLVOZ2oz5XwhZLOL4k.mp3" autoPlay={true} />
+        </div>
+      </ScrollAnimation>
       
       <Header 
         coupleNames={{

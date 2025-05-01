@@ -7,6 +7,7 @@ import CoupleSection from '@/components/sections/CoupleSection';
 import LocationSection from '@/components/sections/LocationSection';
 import Footer from '@/components/layout/Footer';
 import { ScrollAnimation } from '@/components/ui/scroll-animation';
+import { AudioPlayer } from '@/components/ui/audio-player/AudioPlayer';
 
 // 클라이언트 컴포넌트는 dynamic import로 로드
 const AudioPlayerWrapper = dynamic(() => import('@/components/ui/audio-player').then(mod => ({ default: mod.AudioPlayerWrapper })));
@@ -228,7 +229,6 @@ export default function Home() {
           groom: weddingData.couple.groom.fullName
         }}
         weddingDate={weddingData.wedding.date.split(' ').slice(0, 3).join(' ')}
-        shareLinks={weddingData.shareLinks}
         accountInfo={weddingData.accountInfo}
       />
     </>

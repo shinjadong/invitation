@@ -1,2 +1,2 @@
 export { AudioPlayer } from './AudioPlayer';
-export { default as AudioPlayerWrapper } from './AudioPlayerWrapper'; 
+export { default as AudioPlayerWrapper } from './AudioPlayerWrapper';

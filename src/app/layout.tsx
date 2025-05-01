@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Sunflower } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 const notoSansKr = Noto_Sans_KR({
@@ -17,7 +18,7 @@ const sunflower = Sunflower({
 
 export const metadata: Metadata = {
   title: "우성 & 태린, 결혼합니다",
-  description: "2025년 5월 17일 토요일 오후 1시 30분, 더 라움 아트센터",
+  description: "2025년 5월 31일 토요일 오후 4시 20분, 세인트메리엘 2F",
 };
 
 export default function RootLayout({
@@ -27,9 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body
-        className={`${notoSansKr.variable} ${sunflower.variable} font-noto antialiased`}
-      >
+      <body className={`${notoSansKr.variable} ${sunflower.variable} font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -37,6 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

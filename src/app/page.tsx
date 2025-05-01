@@ -6,6 +6,7 @@ import GreetingSection from '@/components/sections/GreetingSection';
 import CoupleSection from '@/components/sections/CoupleSection';
 import LocationSection from '@/components/sections/LocationSection';
 import Footer from '@/components/layout/Footer';
+import { ScrollAnimation } from '@/components/ui/scroll-animation';
 
 // 레이지 로딩을 적용한 컴포넌트
 const GallerySection = dynamic(() => import('@/components/sections/GallerySection'), {
@@ -55,13 +56,20 @@ export default function Home() {
       day: '토요일',
       location: {
         name: '세인트메리엘',
-        address: '서울특별시 강남구 테헤란로 123',
-        detailAddress: '세인트홀 2F',
+        address: '서울 강남구 논현로79길 72 B1F, 1F, 2F',
+        detailAddress: '웨딩홀 2F',
         mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.0541593705257!2d127.02824881531017!3d37.49889697981131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15aee9ab0cb%3A0x31793fc63e0cf9d3!2z7ISc7Jq47Yq567OE7IucIOqwleuCqOq1rCDthYztl6TrnoDroZwgNDIx!5e0!3m2!1sko!2skr!4v1617091821320!5m2!1sko!2skr',
+        phone: '02-538-3300',
         transportationInfo: {
-          car: '강남역에서 테헤란로를 따라 2km 직진 후 우회전',
-          publicTransport: '지하철 2호선 강남역 3번 출구에서 도보 10분',
-          shuttle: '강남역 4번 출구 앞에서 셔틀버스 운행 (20분 간격)'
+          car: '강남역에서 논현로를 따라 이동 후 논현로79길로 우회전',
+          publicTransport: '신분당선 강남역 4번 출구에서 도보 약 427m (약 7분)',
+          shuttle: '강남역 주변 셔틀버스 운행 문의 (02-538-3300)'
+        },
+        facilities: {
+          parking: '건물 지하 2층 무료 주차장 이용 가능 (3시간)',
+          restaurant: '지하1층 뷔페 레스토랑 운영',
+          restroom: '각 층마다 화장실 구비',
+          dressRoom: '신랑/신부 대기실 별도 운영'
         }
       },
       backgroundImage: 'https://bhmrakolqc17mtsl.public.blob.vercel-storage.com/KakaoTalk_20250424_225551391-wXm3ahlrQzSBycmGYtuWw88jBIqdWM.jpg',
@@ -99,12 +107,12 @@ export default function Home() {
     },
     accountInfo: {
       bride: {
-        name: '김태린 (신부)',
-        bank: '기업은행',
-        accountNumber: '000-000-000'
+        name: '정주희 (신부)',
+        bank: '하나은행',
+        accountNumber: '230-145980-01-012'
       },
       groom: {
-        name: '신우성 (신랩)',
+        name: '신우성 (신랑)',
         bank: '신한은행',
         accountNumber: '000-000-000'
       }
@@ -140,65 +148,71 @@ export default function Home() {
           message={weddingData.wedding.message}
         />
         
-        <GreetingSection 
-          title={weddingData.greeting.title}
-          subtitle={weddingData.greeting.subtitle}
-          message={weddingData.greeting.message}
-          coupleNames={{
-            bride: {
-              fullName: weddingData.couple.bride.fullName,
-              engName: weddingData.couple.bride.engName
-            },
-            groom: {
-              fullName: weddingData.couple.groom.fullName,
-              engName: weddingData.couple.groom.engName
-            }
-          }}
-        />
+        <ScrollAnimation style="shorts" delay={100}>
+          <GreetingSection 
+            title={weddingData.greeting.title}
+            subtitle={weddingData.greeting.subtitle}
+            message={weddingData.greeting.message}
+            coupleNames={{
+              bride: {
+                fullName: weddingData.couple.bride.fullName,
+                engName: weddingData.couple.bride.engName
+              },
+              groom: {
+                fullName: weddingData.couple.groom.fullName,
+                engName: weddingData.couple.groom.engName
+              }
+            }}
+          />
+        </ScrollAnimation>
         
-        <CoupleSection 
-          title="신랑 & 신부"
-          subtitle="about us"
-          bride={{
-            fullName: weddingData.couple.bride.fullName,
-            engName: weddingData.couple.bride.engName,
-            description: weddingData.couple.bride.description,
-            image: weddingData.couple.bride.image,
-            parents: weddingData.couple.bride.parents,
-            tags: weddingData.couple.bride.tags
-          }}
-          groom={{
-            fullName: weddingData.couple.groom.fullName,
-            engName: weddingData.couple.groom.engName,
-            description: weddingData.couple.groom.description,
-            image: weddingData.couple.groom.image,
-            parents: weddingData.couple.groom.parents,
-            tags: weddingData.couple.groom.tags
-          }}
-        />
+        <ScrollAnimation style="shorts" delay={200}>
+          <CoupleSection 
+            title="신랑 & 신부"
+            subtitle="about us"
+            bride={{
+              fullName: weddingData.couple.bride.fullName,
+              engName: weddingData.couple.bride.engName,
+              image: weddingData.couple.bride.image,
+              parents: weddingData.couple.bride.parents
+            }}
+            groom={{
+              fullName: weddingData.couple.groom.fullName,
+              engName: weddingData.couple.groom.engName,
+              image: weddingData.couple.groom.image,
+              parents: weddingData.couple.groom.parents
+            }}
+          />
+        </ScrollAnimation>
         
         <Suspense fallback={<div className="py-20 text-center">갤러리를 불러오는 중...</div>}>
-          <GallerySection 
-            title={weddingData.gallery.title}
-            subtitle={weddingData.gallery.subtitle}
-            images={weddingData.gallery.images}
-          />
+          <ScrollAnimation style="shorts" delay={300}>
+            <GallerySection 
+              title={weddingData.gallery.title}
+              subtitle={weddingData.gallery.subtitle}
+              images={weddingData.gallery.images}
+            />
+          </ScrollAnimation>
         </Suspense>
         
-        <LocationSection 
-          title="오시는 길"
-          subtitle="location"
-          location={weddingData.wedding.location}
-          weddingDate={weddingData.wedding.date.split(' ').slice(0, 3).join(' ')}
-          weddingTime={weddingData.wedding.time}
-        />
+        <ScrollAnimation style="shorts" delay={400}>
+          <LocationSection 
+            title="오시는 길"
+            subtitle="location"
+            location={weddingData.wedding.location}
+            weddingDate={weddingData.wedding.date.split(' ').slice(0, 3).join(' ')}
+            weddingTime={weddingData.wedding.time}
+          />
+        </ScrollAnimation>
         
         <Suspense fallback={<div className="py-20 text-center">방명록을 불러오는 중...</div>}>
-          <GuestbookSection 
-            title={weddingData.guestbook.title}
-            subtitle={weddingData.guestbook.subtitle}
-            entries={weddingData.guestbook.entries}
-          />
+          <ScrollAnimation style="shorts" delay={500}>
+            <GuestbookSection 
+              title={weddingData.guestbook.title}
+              subtitle={weddingData.guestbook.subtitle}
+              entries={weddingData.guestbook.entries}
+            />
+          </ScrollAnimation>
         </Suspense>
       </main>
       

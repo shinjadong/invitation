@@ -89,45 +89,44 @@ const Footer: React.FC<FooterProps> = ({
               <DialogTrigger asChild>
                 <Button variant="outline">계좌번호 보기</Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-md">
+              <DialogContent 
+                className="sm:max-w-md"
+                aria-labelledby="account-dialog-title"
+              >
                 <DialogHeader>
-                  <DialogTitle className="text-center">축하의 마음 전하기</DialogTitle>
+                  <DialogTitle id="account-dialog-title" className="text-center">축하의 마음 전하기</DialogTitle>
                 </DialogHeader>
                 <div className="py-4">
                   <div className="space-y-6">
-                    {accountInfo.bride && (
-                      <div className="space-y-2">
-                        <h4 className="text-center text-sm font-medium text-muted-foreground">신부측</h4>
-                        <div className="flex flex-col items-center p-4 border rounded-md">
-                          <p className="font-medium">{accountInfo.bride.name}</p>
-                          <p className="text-sm text-muted-foreground">{accountInfo.bride.bank}</p>
-                          <p className="text-sm mt-1">{accountInfo.bride.accountNumber}</p>
-                          <Button variant="ghost" size="sm" className="mt-2" onClick={() => {
-                            navigator.clipboard.writeText(accountInfo.bride!.accountNumber);
-                            alert('계좌번호가 복사되었습니다.');
-                          }}>
-                            복사하기
-                          </Button>
-                        </div>
+                    <div className="space-y-2">
+                      <h4 className="text-center text-sm font-medium text-muted-foreground">신랑측</h4>
+                      <div className="flex flex-col items-center p-4 border rounded-md">
+                        <p className="font-medium">신안식 <span className="text-sm text-muted-foreground">부</span></p>
+                        <p className="text-sm text-muted-foreground">새마을금고</p>
+                        <p className="text-sm mt-1">9003-2863-0563-0</p>
+                        <Button variant="ghost" size="sm" className="mt-2" onClick={() => {
+                          navigator.clipboard.writeText("9003-2863-0563-0");
+                          alert('계좌번호가 복사되었습니다.');
+                        }}>
+                          복사하기
+                        </Button>
                       </div>
-                    )}
+                    </div>
                     
-                    {accountInfo.groom && (
-                      <div className="space-y-2">
-                        <h4 className="text-center text-sm font-medium text-muted-foreground">신랑측</h4>
-                        <div className="flex flex-col items-center p-4 border rounded-md">
-                          <p className="font-medium">{accountInfo.groom.name}</p>
-                          <p className="text-sm text-muted-foreground">{accountInfo.groom.bank}</p>
-                          <p className="text-sm mt-1">{accountInfo.groom.accountNumber}</p>
-                          <Button variant="ghost" size="sm" className="mt-2" onClick={() => {
-                            navigator.clipboard.writeText(accountInfo.groom!.accountNumber);
-                            alert('계좌번호가 복사되었습니다.');
-                          }}>
-                            복사하기
-                          </Button>
-                        </div>
+                    <div className="space-y-2">
+                      <h4 className="text-center text-sm font-medium text-muted-foreground">신부측</h4>
+                      <div className="flex flex-col items-center p-4 border rounded-md mb-3">
+                        <p className="font-medium">정주희 <span className="text-sm text-muted-foreground">신부</span></p>
+                        <p className="text-sm text-muted-foreground">하나은행</p>
+                        <p className="text-sm mt-1">230-145980-01-012</p>
+                        <Button variant="ghost" size="sm" className="mt-2" onClick={() => {
+                          navigator.clipboard.writeText("230-145980-01-012");
+                          alert('계좌번호가 복사되었습니다.');
+                        }}>
+                          복사하기
+                        </Button>
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
               </DialogContent>

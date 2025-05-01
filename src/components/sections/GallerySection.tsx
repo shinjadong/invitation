@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -11,8 +11,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 interface GalleryImage {
   src: string;
@@ -42,7 +42,24 @@ const GallerySection: React.FC<GallerySectionProps> = ({
     threshold: 0.1,
   });
 
-  // const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+
+  // 모달 닫기 함수
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  // ESC 키로 모달 닫기
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedImage) {
+        closeModal();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage]);
 
   return (
     <section id="gallery" className="py-20 bg-background">
@@ -77,35 +94,22 @@ const GallerySection: React.FC<GallerySectionProps> = ({
               {images.map((image, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Card className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
-                          <CardContent className="p-0 aspect-square relative">
-                            <Image
-                              src={image.src}
-                              alt={image.alt}
-                              fill
-                              className="object-cover transition-transform hover:scale-105 duration-300"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              // 레이지 로딩 적용 (첫 3개 이미지는 바로 로드)
-                              loading={index < 3 ? "eager" : "lazy"}
-                            />
-                          </CardContent>
-                        </Card>
-                      </DialogTrigger>
-                      <DialogContent className="sm:max-w-3xl p-0 bg-transparent border-none">
-                        <div className="relative w-full h-full max-h-[80vh] overflow-hidden">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            width={image.width}
-                            height={image.height}
-                            className="w-full h-auto object-contain"
-                            priority
-                          />
-                        </div>
-                      </DialogContent>
-                    </Dialog>
+                    <Card 
+                      className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
+                      onClick={() => setSelectedImage(image)}
+                    >
+                      <CardContent className="p-0 aspect-square relative">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          className="object-cover transition-transform hover:scale-105 duration-300"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          // 레이지 로딩 적용 (첫 3개 이미지는 바로 로드)
+                          loading={index < 3 ? "eager" : "lazy"}
+                        />
+                      </CardContent>
+                    </Card>
                   </div>
                 </CarouselItem>
               ))}
@@ -117,6 +121,52 @@ const GallerySection: React.FC<GallerySectionProps> = ({
           </Carousel>
         </div>
       </div>
+
+      {/* 커스텀 모달 */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          onClick={closeModal}
+        >
+          <div 
+            className="relative max-w-3xl max-h-[90vh] bg-background p-2 rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-2 right-2 z-10 bg-background/80 rounded-full"
+              onClick={closeModal}
+              aria-label="Close modal"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </Button>
+            <div className="max-h-[85vh] overflow-hidden">
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt || "Gallery image"}
+                width={selectedImage.width}
+                height={selectedImage.height}
+                className="w-full h-auto object-contain"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -4,9 +4,9 @@ import { NextRequest, NextResponse } from 'next/server';
 // DELETE: 특정 방명록 메시지 삭제
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
-  const { id } = params;
+  const { id } = context.params;
   
   // 비밀번호 확인 로직
   // 실제 구현에서는 더 안전한 인증 방식을 사용하는 것이 좋습니다!
